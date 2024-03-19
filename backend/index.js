@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const { PrismaClient } = require("@prisma/client");
 const cors = require("cors");
 // const redis = require("redis");
-const rateLimit = require("express-rate-limit");
+// const rateLimit = require("express-rate-limit");
 // const { promisify } = require("util");
 
 const prisma = new PrismaClient();
@@ -19,12 +19,12 @@ const PORT = process.env.PORT || 3000;
 // const SET_ASYNC = promisify(client.set).bind(client);
 app.use(cors());
 app.use(bodyParser.json());
-const limiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 10,
-});
+// const limiter = rateLimit({
+//   windowMs: 60 * 1000,
+//   max: 10,
+// });
 
-app.use(limiter);
+// app.use(limiter);
 
 app.post("/submissions", async (req, res) => {
   try {
