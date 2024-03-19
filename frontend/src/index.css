@@ -3,6 +3,7 @@
 @tailwind utilities;
 * {
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 html,
 body {
@@ -48,6 +49,8 @@ body {
 .code-editor {
   width: 100vw;
   height: 100vh;
+  font-family: sans-serif;
+  z-index: -999;
 }
 .editor-side-bar {
   display: block;
@@ -155,7 +158,6 @@ body {
 
 .console {
   width: 100vw;
-  height: 200px;
   display: flex;
   flex-direction: column;
   padding: 0vw 1vw 0vw 1vw;
@@ -163,7 +165,12 @@ body {
 
 .console-top-bar {
   display: flex;
-  width: 100vw;
+  width: 97vw;
+  align-items: center;
+  justify-content: space-between;
+}
+.leftbar {
+  display: flex;
 }
 .console-tab {
   line-height: 1.8rem;
@@ -188,6 +195,8 @@ body {
   resize: none;
   width: 98vw;
   height: 30vh;
+  padding: 0;
+  margin: 0;
 }
 
 .editor-input:active {
@@ -195,6 +204,29 @@ body {
 }
 
 .editor-output {
-  background-color: #1e1e1e;
+  outline: none;
+  resize: none;
+  width: 98vw;
   height: 30vh;
+  padding: 0;
+  margin: 0;
+}
+
+.language-drop-option {
+  background-color: #181818;
+}
+
+.language-drop-header {
+  background-color: #181818;
+}
+.close-button:hover {
+  cursor: pointer;
+}
+
+.signup-form{
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100vw;
 }

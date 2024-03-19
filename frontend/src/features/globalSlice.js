@@ -4,9 +4,10 @@ import { languages } from "../data/compiler";
 const globalSlice = createSlice({
   name: "global",
   initialState: {
+    currentUser: "",
     editorConsole: "",
     editorInput: "",
-    editorCode: "//Happy Coding!",
+    editorCode: "//Happy Coding!\n//Load the template for the basic code!",
     isProcessing: false,
     isDarkMode: true,
     languages: [...languages],
@@ -19,6 +20,9 @@ const globalSlice = createSlice({
     },
   },
   reducers: {
+    setUser: (state, action) => {
+      state.currentUser = action.payload;
+    },
     toggleDarkMode: (state) => {
       state.isDarkMode = !state.isDarkMode;
     },
@@ -47,6 +51,7 @@ export const {
   toggleProcessing,
   languageChange,
   inputChange,
+  setUser
 } = globalSlice.actions;
 
 export default globalSlice.reducer;

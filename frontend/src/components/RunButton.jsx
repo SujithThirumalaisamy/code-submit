@@ -2,7 +2,7 @@ import React from "react";
 
 function RunButton() {
   return (
-    <button className="text-white font-bold rounded run-button">Run</button>
+    <button className="text-white font-medium rounded run-button">Run</button>
   );
 }
 export default RunButton;
