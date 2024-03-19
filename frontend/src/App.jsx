@@ -1,10 +1,12 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { CodeEditor } from "./components/CodeEditor";
 import Signup from "./components/Signup";
 import Cookies from "universal-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./features/globalSlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const globalState = useSelector((state) => state.globalSlice);
@@ -14,7 +16,19 @@ function App() {
     dispatch(setUser(cookies.get("CodeSubmitUser")));
   }, []);
   return (
-    <>{globalState.currentUser === undefined ? <Signup /> : <CodeEditor />}</>
+    <>
+      <>{globalState.currentUser === undefined ? <Signup /> : <CodeEditor />}</>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="dark"
+        transition:Bounce
+      />
+    </>
   );
 }
 

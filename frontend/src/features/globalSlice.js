@@ -1,4 +1,4 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { languages } from "../data/compiler";
 
 const globalSlice = createSlice({
@@ -51,7 +51,7 @@ export const {
   toggleProcessing,
   languageChange,
   inputChange,
-  setUser
+  setUser,
 } = globalSlice.actions;
 
 export default globalSlice.reducer;

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
 import { setUser } from "../features/globalSlice";
+import { toast } from "react-toastify";
 
 function Signup() {
   const [signupForm, setSignupForm] = useState({
@@ -12,8 +13,13 @@ function Signup() {
   const [isChecked, setIsCheck] = useState(false);
   const cookies = new Cookies(null, { path: "/" });
   const signup = () => {
-    cookies.set("CodeSubmitUser", signupForm.username);
-    dispatch(setUser(signupForm.username));
+    if (!isChecked) {
+      toast.error("Please Accept the Terms and Conditions!");
+    } else {
+      cookies.set("CodeSubmitUser", signupForm.username);
+      dispatch(setUser(signupForm.username));
+      toast.success("Logged in successfully!");
+    }
   };
   return (
     <div className="signup-form">
@@ -48,6 +54,7 @@ function Signup() {
               className="mr-2 leading-tight"
               type="checkbox"
               value={isChecked ? "true" : "false"}
+              onChange={() => setIsCheck((prev) => !prev)}
             />
             <span className="text-sm">
               Accept the terms and conditions of this platform

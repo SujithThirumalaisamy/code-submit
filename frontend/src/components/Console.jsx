@@ -1,25 +1,43 @@
-import React, { useState } from "react";
+import { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import globalSlice, { inputChange } from "../features/globalSlice";
+import { inputChange } from "../features/globalSlice";
 
-function Console() {
+function Console({ isConsoleOpen, setIsConsoleOpen, setIsInput, isInput }) {
   const globalState = useSelector((state) => state.globalSlice);
   const dispatch = useDispatch();
-  const [isInput, setIsInput] = useState(true);
-  const [isConsoleOpen, setIsConsoleOpen] = useState(true);
+
+  function SplitStringComponent(text) {
+    const lines = text.split("\n");
+    return (
+      <div>
+        {lines.map((line, index) => (
+          <Fragment key={index}>
+            {line}
+            <br />
+          </Fragment>
+        ))}
+      </div>
+    );
+  }
   return (
     <div className="console">
       <div className="console-top-bar">
         <div className="leftbar">
           <div
             className={`console-tab tab-1 ${isInput ? "tab-active" : ""}`}
-            onClick={() => setIsInput((prev) => !prev)}
+            onClick={() => {
+              setIsInput((prev) => !prev);
+              setIsConsoleOpen(true);
+            }}
           >
             Input
           </div>
           <div
             className={`console-tab tab-2 ${isInput ? "" : "tab-active"}`}
-            onClick={() => setIsInput((prev) => !prev)}
+            onClick={() => {
+              setIsInput((prev) => !prev);
+              setIsConsoleOpen(true);
+            }}
           >
             Output
           </div>
@@ -46,7 +64,7 @@ function Console() {
             fillRule="currentColor"
             fill="white"
             aria-hidden="true"
-            style={{transform:"rotate(180deg)"}}
+            style={{ transform: "rotate(180deg)" }}
             onClick={() => setIsConsoleOpen((prev) => !prev)}
           >
             <path
@@ -66,11 +84,12 @@ function Console() {
             onChange={(e) => dispatch(inputChange(e.target.value))}
           />
         ) : (
-          <div className="editor-output">{globalState.editorConsole}</div>
+          <div className="editor-output">
+            {SplitStringComponent(globalState.editorConsole)}
+          </div>
         )}
       </div>
     </div>
   );
 }
-
 export default Console;
