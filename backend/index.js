@@ -10,7 +10,7 @@ const rateLimit = require("express-rate-limit");
 
 const prisma = new PrismaClient();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 // const client = redis.createClient({
 //   url: "redis://192.168.1.201:6379",
 // });
