@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./features/globalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Submissions from "./pages/Submissions";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
   const globalState = useSelector((state) => state.globalSlice);
@@ -15,9 +17,20 @@ function App() {
   useEffect(() => {
     dispatch(setUser(cookies.get("CodeSubmitUser")));
   }, []);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element:
+        globalState.currentUser === undefined ? <Signup /> : <CodeEditor />,
+    },
+    {
+      path: "submissions",
+      element: <Submissions />,
+    },
+  ]);
   return (
     <>
-      <>{globalState.currentUser === undefined ? <Signup /> : <CodeEditor />}</>
+      <RouterProvider router={router} />
       <ToastContainer
         position="top-right"
         autoClose={5000}

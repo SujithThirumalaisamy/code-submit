@@ -1,42 +1,38 @@
-import { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { inputChange } from "../features/globalSlice";
+import {
+  inputChange,
+  setConsoleInput,
+  setConsoleOpen,
+} from "../features/globalSlice";
+import SplitStringComponent from "../features/SplitStringComponent";
 
-function Console({ isConsoleOpen, setIsConsoleOpen, setIsInput, isInput }) {
+function Console() {
   const globalState = useSelector((state) => state.globalSlice);
   const dispatch = useDispatch();
+  const { isConsoleOpen, isConsoleInput } = globalState;
 
-  function SplitStringComponent(text) {
-    const lines = text.split("\n");
-    return (
-      <div>
-        {lines.map((line, index) => (
-          <Fragment key={index}>
-            {line}
-            <br />
-          </Fragment>
-        ))}
-      </div>
-    );
-  }
   return (
     <div className="console">
       <div className="console-top-bar">
         <div className="leftbar">
           <div
-            className={`console-tab tab-1 ${isInput ? "tab-active" : ""}`}
+            className={`console-tab tab-1 ${
+              isConsoleInput ? "tab-active" : ""
+            }`}
             onClick={() => {
-              setIsInput((prev) => !prev);
-              setIsConsoleOpen(true);
+              dispatch(setConsoleInput((state) => !state));
+              dispatch(setConsoleOpen(true));
             }}
           >
             Input
           </div>
           <div
-            className={`console-tab tab-2 ${isInput ? "" : "tab-active"}`}
+            className={`console-tab tab-2 ${
+              isConsoleInput ? "" : "tab-active"
+            }`}
             onClick={() => {
-              setIsInput((prev) => !prev);
-              setIsConsoleOpen(true);
+              dispatch(setConsoleInput((state) => !state));
+              dispatch(setConsoleOpen(true));
             }}
           >
             Output
@@ -49,7 +45,7 @@ function Console({ isConsoleOpen, setIsConsoleOpen, setIsInput, isInput }) {
             fillRule="currentColor"
             fill="white"
             aria-hidden="true"
-            onClick={() => setIsConsoleOpen((prev) => !prev)}
+            onClick={() => dispatch(setConsoleOpen((state) => !state))}
           >
             <path
               fillRule="evenodd"
@@ -65,7 +61,7 @@ function Console({ isConsoleOpen, setIsConsoleOpen, setIsInput, isInput }) {
             fill="white"
             aria-hidden="true"
             style={{ transform: "rotate(180deg)" }}
-            onClick={() => setIsConsoleOpen((prev) => !prev)}
+            onClick={() => dispatch(setConsoleOpen((state) => !state))}
           >
             <path
               fillRule="evenodd"
@@ -76,7 +72,7 @@ function Console({ isConsoleOpen, setIsConsoleOpen, setIsInput, isInput }) {
         )}
       </div>
       <div className={`${isConsoleOpen ? "" : "hidden"} content`}>
-        {isInput ? (
+        {isConsoleInput ? (
           <textarea
             className="editor-input"
             type="text"

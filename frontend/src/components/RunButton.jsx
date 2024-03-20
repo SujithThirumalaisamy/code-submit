@@ -2,10 +2,14 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Hourglass } from "react-loader-spinner";
-import { consoleChange } from "../features/globalSlice";
+import {
+  consoleChange,
+  setConsoleInput,
+  setConsoleOpen,
+} from "../features/globalSlice";
 import axios from "axios";
 
-function RunButton({ setIsConsoleOpen, setIsInput }) {
+function RunButton() {
   const globalState = useSelector((state) => state.globalSlice);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -27,14 +31,14 @@ function RunButton({ setIsConsoleOpen, setIsInput }) {
       });
 
       const responseData = await response.json();
+      dispatch(setConsoleOpen(true));
+      dispatch(setConsoleInput(false));
 
-      setIsConsoleOpen(true);
-      setIsInput(false);
-      toast.success("Code Executed Succesfully!");
-
-      if (responseData.stdout == null) {
+      if (responseData.status.id !== 3) {
+        toast.error("Oops! Something Gone Wrong.");
         return;
       } else {
+        toast.success("Code Executed Succesfully!");
         dispatch(
           consoleChange(globalState.editorConsole + responseData.stdout)
         );

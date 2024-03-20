@@ -9,7 +9,7 @@ function LoadTemplate() {
   };
   return (
     <button
-      className="text-white font-medium rounded run-button"
+      className="text-white font-medium rounded button"
       onClick={loadTemplate}
     >
       Load Template

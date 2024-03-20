@@ -18,8 +18,16 @@ const globalSlice = createSlice({
       template:
         '// Print Hello, World! to the console\nconsole.log("Hello, World!");',
     },
+    isConsoleOpen: true,
+    isConsoleInput: true,
   },
   reducers: {
+    setConsoleOpen: (state, action) => {
+      state.isConsoleOpen = action.payload;
+    },
+    setConsoleInput: (state, action) => {
+      state.isConsoleInput = action.payload;
+    },
     setUser: (state, action) => {
       state.currentUser = action.payload;
     },
@@ -52,6 +60,8 @@ export const {
   languageChange,
   inputChange,
   setUser,
+  setConsoleOpen,
+  setConsoleInput,
 } = globalSlice.actions;
 
 export default globalSlice.reducer;

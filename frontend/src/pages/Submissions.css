@@ -1,0 +1,71 @@
+.submission-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.submission-table {
+  width: 90vw;
+  margin: 0px 5vw;
+}
+.heading-row {
+  background-color: rgb(29, 29, 29);
+  font-weight: 600;
+}
+th {
+  padding: 8px 0px;
+}
+tr {
+  height: 40px;
+  text-align: left;
+  border-bottom: 1px solid rgb(29, 29, 29);
+}
+tr td,th{
+    padding: 0px 10px;
+}
+tr td:last-child,
+th:last-child {
+  text-align: right;
+}
+.snippet-wrapper{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(29, 29, 29);
+    margin: 5px;
+    padding: 5px 10px;
+    max-width: 30vw;
+    border-radius: 8px;
+    position: relative;
+}
+.snippet-top{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    right: 10px;
+}
+.snippet-body{
+    overflow-x: scroll;
+    margin-top: 25px;
+}
+/* width */
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(29, 29, 29); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

@@ -152,6 +152,10 @@ body {
 }
 
 .run-button {
+  background-color: #189e33;
+  padding: 6px 20px;
+}
+.button {
   background-color: #d41f30;
   padding: 6px 20px;
 }
@@ -223,10 +227,17 @@ body {
   cursor: pointer;
 }
 
-.signup-form{
+.signup-form {
   height: 100vh;
   align-items: center;
   justify-content: center;
   display: flex;
   width: 100vw;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  font-size: larger;
+  font-weight: 500;
+  gap: 20px;
 }
