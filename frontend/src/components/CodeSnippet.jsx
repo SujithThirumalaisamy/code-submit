@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { toast } from "react-toastify";
 import SplitStringComponent from "../features/SplitStringComponent";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 export default function CodeSnippet({ code }) {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { useEffect } from "react";
 import { CodeEditor } from "./components/CodeEditor";
@@ -25,7 +26,7 @@ function App() {
     },
     {
       path: "submissions",
-      element: <Submissions />,
+      element: <Submissions />, 
     },
   ]);
   return (

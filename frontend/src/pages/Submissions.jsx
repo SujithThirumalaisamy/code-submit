@@ -1,26 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import CodeSnippet from "../components/CodeSnippet";
 import Navbar from "../components/Navbar";
 import { languages } from "../data/compiler";
 import "./Submissions.css";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
 import { setUser } from "../features/globalSlice";
 
 export default function Submissions() {
   const [datas, setDatas] = useState([]);
-  const globalState = useSelector((state) => state.globalSlice);
   const dispatch = useDispatch();
   const cookies = new Cookies(null, { path: "/" });
   useEffect(() => {
     const user = cookies.get("CodeSubmitUser");
     dispatch(setUser(user));
     axios
-      .get(
-        import.meta.env.VITE_BACKEND_URL +
-          `?username=${user}`
-      )
+      .get(import.meta.env.VITE_BACKEND_URL + `?username=${user}`)
       .then((res) => {
         setDatas(res.data);
       });
