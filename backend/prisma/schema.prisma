@@ -10,7 +10,7 @@ datasource db {
 }
 
 model Submission {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
   username       String
   languageID     Int
   code           String

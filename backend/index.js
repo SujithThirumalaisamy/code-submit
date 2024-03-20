@@ -42,6 +42,7 @@ app.post("/submissions", async (req, res) => {
 app.get("/submissions", async (req, res) => {
   const { page = 1, limit = 10 } = req.query;
   const offset = (page - 1) * limit;
+  const username = req.query.username;
   try {
     // const cachedData = await GET_ASYNC(`page:${page}`);
     // if (cachedData) {
@@ -51,10 +52,16 @@ app.get("/submissions", async (req, res) => {
     const submissions = await prisma.submission.findMany({
       skip: offset,
       take: limit,
+      where: {
+        AND: {
+          username,
+        },
+      },
     });
     // await SET_ASYNC("page:2", JSON.stringify(submissions), "EX", 60);
     res.json(submissions);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: "Failed to fetch submissions" });
   }
 });
