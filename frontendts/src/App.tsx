@@ -10,9 +10,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Submissions from "./pages/Submissions";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { GlobalState } from "./app/store.ts";
 
 function App() {
-  const globalState = useSelector((state) => state.globalSlice);
+  const globalState: GlobalState = useSelector<GlobalState>(
+    (state) => state.globalSlice
+  );
   const dispatch = useDispatch();
   const cookies = new Cookies(null, { path: "/" });
   useEffect(() => {
@@ -40,7 +43,6 @@ function App() {
         pauseOnFocusLoss
         pauseOnHover
         theme="dark"
-        transition:Bounce
       />
     </>
   );
