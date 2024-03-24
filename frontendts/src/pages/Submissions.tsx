@@ -8,9 +8,17 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
 import { setUser } from "../features/globalSlice";
-
+type dataType = {
+  id: string;
+  username: string;
+  languageID: number;
+  code: string;
+  input: string;
+  submissionTime: string;
+  output: string;
+};
 export default function Submissions() {
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState<Array<dataType>>([]);
   const dispatch = useDispatch();
   const cookies = new Cookies(null, { path: "/" });
   useEffect(() => {
@@ -22,12 +30,12 @@ export default function Submissions() {
         setDatas(res.data);
       });
   }, []);
-  const getTime = (date) => {
+  function getTime(date: string) {
     return new Date(date).toISOString().split("T")[1].split(".")[0];
-  };
+  }
 
-  const getLanguage = (langID) => {
-    var ans = undefined;
+  const getLanguage = (langID: number) => {
+    let ans = undefined;
     languages.forEach((language) => {
       if (langID == language.id) {
         ans = language.languageName.split("(")[0];
@@ -53,19 +61,15 @@ export default function Submissions() {
         <tbody>
           {datas.map((data) => {
             return (
-              <tr key={data.submissionID}>
-                <td key={data.submissionID + "1"}>{data.id.slice(-10)}</td>
-                <td key={data.submissionID + "2"}>{data.username}</td>
-                <td key={data.submissionID + "3"}>
-                  {getLanguage(data.languageID)}
-                </td>
+              <tr key={data.id}>
+                <td key={data.id + "1"}>{data.id.slice(-10)}</td>
+                <td key={data.id + "2"}>{data.username}</td>
+                <td key={data.id + "3"}>{getLanguage(data.languageID)}</td>
                 <td>
                   <CodeSnippet code={data.code} />
                 </td>
-                <td key={data.submissionID + "5"}>{data.output}</td>
-                <td key={data.submissionID + "4"}>
-                  {getTime(data.submissionTime)}
-                </td>
+                <td key={data.id + "5"}>{data.output}</td>
+                <td key={data.id + "4"}>{getTime(data.submissionTime)}</td>
               </tr>
             );
           })}
