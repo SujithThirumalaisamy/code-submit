@@ -1,0 +1,26 @@
+.resizable-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #333333;
+  border-radius: 8px;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.wrapper-header {
+  background-color: #333333;
+  border-radius: 8px 8px 0 0;
+  padding: 4px;
+}
+.wrapper-body{
+  flex-grow: 1;
+}
+.heading {
+  padding: 4px 8px;
+  display: inline-flex;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.heading:hover {
+  background-color: #434343;
+  display: inline-flex;
+}

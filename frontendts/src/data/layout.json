@@ -1,0 +1,54 @@
+{
+  "type": "row",
+  "children": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "tabset",
+          "weight": 100,
+          "weightBeforeFold": 100,
+          "children": [
+            {
+              "type": "tab",
+              "component": "Editor"
+            }
+          ],
+          "active": false,
+          "selected": 0
+        },
+        {
+          "type": "row",
+          "weight": 100,
+          "children": [
+            {
+              "type": "tabset",
+              "weight": 50,
+              "weightBeforeFold": 50,
+              "children": [
+                {
+                  "type": "tab",
+                  "component": "input"
+                }
+              ],
+              "active": true
+            },
+            {
+              "type": "tabset",
+              "weight": 50,
+              "weightBeforeFold": 50,
+              "children": [
+                {
+                  "type": "tab",
+                  "component": "output"
+                }
+              ],
+              "active": false,
+              "selected": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
