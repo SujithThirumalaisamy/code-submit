@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-export default function SplitStringComponent(text) {
+export default function SplitStringComponent(text:string) {
   const lines = text.split("\n");
   return (
     <div>

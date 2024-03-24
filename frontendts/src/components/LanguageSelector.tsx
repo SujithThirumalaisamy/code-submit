@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../features/globalSlice";
 import { languages } from "../data/compiler";
+import { GlobalState } from "../app/store";
 
 function LanguageSelector() {
   const dispatch = useDispatch();
-  const globalState = useSelector((state) => state.globalSlice);
+  const globalState:GlobalState = useSelector<GlobalState>((state) => state.globalSlice);
   const [languageDropdownIsOpen, setLanguageDropdownIsOpen] = useState(false);
   return (
     <div className="relative inline-block text-left">
@@ -21,7 +22,6 @@ function LanguageSelector() {
           <svg
             className="-mr-1 h-5 w-5 text-white-900"
             viewBox="0 0 20 20"
-            fillRule="currentColor"
             fill="white"
             aria-hidden="true"
           >
@@ -41,7 +41,6 @@ function LanguageSelector() {
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="menu-button"
-        tabIndex="-1"
       >
         <div className="py-1 language-drop-option" role="none">
           {languages.map((language) => {

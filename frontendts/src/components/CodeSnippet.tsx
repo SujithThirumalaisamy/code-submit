@@ -1,11 +1,12 @@
-/* eslint-disable react/prop-types */
 import { toast } from "react-toastify";
 import SplitStringComponent from "../features/SplitStringComponent";
 import { useState } from "react";
 
-// eslint-disable-next-line react/prop-types
-export default function CodeSnippet({ code }) {
-  const copyToClipboard = (code) => {
+type CodeSnippetProps = {
+  code:string
+}
+export default function CodeSnippet({ code }:CodeSnippetProps) {
+  const copyToClipboard = (code:string) => {
     navigator.clipboard.writeText(code);
     toast.info("Coppied to Clipboard");
   };

@@ -65,3 +65,4 @@ export const {
 } = globalSlice.actions;
 
 export default globalSlice.reducer;
+

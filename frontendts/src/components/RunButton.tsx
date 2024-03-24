@@ -7,12 +7,22 @@ import {
   setConsoleInput,
   setConsoleOpen,
 } from "../features/globalSlice";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+import { AppDispatch, GlobalState } from "../app/store";
+
+// type DbDataType = {
+//     username:string,
+//     languageID: number,
+//     code: string,
+//     input: string,
+//     submissionTime:number,
+//     output: string,
+// }
 
 function RunButton() {
-  const globalState = useSelector((state) => state.globalSlice);
+  const globalState: GlobalState = useSelector<GlobalState>((state) => state.globalSlice);
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const submitCode = async () => {
     setLoading(true);
     try {
@@ -56,7 +66,7 @@ function RunButton() {
     }
     const currentTime = new Date();
     const submissionTime = currentTime.toISOString();
-    let data = JSON.stringify({
+    const data: string = JSON.stringify({
       username: globalState.currentUser,
       languageID: globalState.currentLanguage.id,
       code: globalState.editorCode,
@@ -65,7 +75,7 @@ function RunButton() {
       output: stdout,
     });
 
-    let config = {
+    const config: AxiosRequestConfig = {
       method: "post",
       maxBodyLength: Infinity,
       url: import.meta.env.VITE_BACKEND_URL,

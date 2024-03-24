@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { codeChange } from "../features/globalSlice";
+import { GlobalState } from "../app/store";
 
 function LoadTemplate() {
-  const globalState = useSelector((state) => state.globalSlice);
+  const globalState:GlobalState = useSelector<GlobalState>((state) => state.globalSlice);
   const dispatch = useDispatch();
   const loadTemplate = () => {
     dispatch(codeChange(globalState.currentLanguage.template));

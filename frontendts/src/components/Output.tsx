@@ -1,11 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { inputChange } from "../features/globalSlice";
+import { useSelector } from "react-redux";
 import SplitStringComponent from "../features/SplitStringComponent";
+import { GlobalState } from "../app/store";
 
-function Output() {
-  const globalState = useSelector((state) => state.globalSlice);
-  const dispatch = useDispatch();
-
+function Output({ heading }: { heading: string }) {
+  const globalState: GlobalState = useSelector<GlobalState>(
+    (state) => state.globalSlice
+  );
+  console.log(heading);
   return (
     <div className="content">
       <div className="editor-output">

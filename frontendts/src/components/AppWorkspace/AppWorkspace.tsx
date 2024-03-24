@@ -1,36 +1,37 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import "./AppWorkspace.css";
 import LayoutComponentWrapper from "../LayoutComponentWrapper/LayoutComponentWrapper";
 import RowWrapper from "../Wrappers/RowWrapper";
 
-export default function AppWorkspace(props) {
-  const [components, setComponents] = useState(["Editor", ["Input", "Output"]]);
-  const Drag = (e) => {
-    console.log(e.target);
-  };
-  function renderComponents(components) {
+type AppWorkspaceProps = {
+  children: ReactElement[];
+};
+
+export default function AppWorkspace(props: AppWorkspaceProps) {
+  const [components] = useState(["Editor", ["Input", "Output"]]);
+
+  function renderComponents(components: (string | string[])[]) {
     return (
       <div className="app-workspace">
-        {components.map((component, index) => (
+        {components.map((component: string | string[], index: number) => (
           <RowWrapper key={index}>
             {Array.isArray(component) ? (
               component.map((childComponent, childIndex) => (
                 <LayoutComponentWrapper
-                  onDrag={Drag}
                   key={childIndex}
                   heading={childComponent}
-                >
-                  {props.children.find(
+                  children={props.children.find(
                     (child) => child.props.heading === childComponent
                   )}
-                </LayoutComponentWrapper>
+                />
               ))
             ) : (
-              <LayoutComponentWrapper heading={component}>
-                {props.children.find(
+              <LayoutComponentWrapper
+                heading={component}
+                children={props.children.find(
                   (child) => child.props.heading === component
                 )}
-              </LayoutComponentWrapper>
+              />
             )}
           </RowWrapper>
         ))}

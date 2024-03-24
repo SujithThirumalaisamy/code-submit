@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
-function Navbar({title}) {
+type NavbarPropsType = {
+  title:string
+}
+function Navbar({title}:NavbarPropsType) {
   return (
     <div className="navbar">
       <div className="wrapper">
