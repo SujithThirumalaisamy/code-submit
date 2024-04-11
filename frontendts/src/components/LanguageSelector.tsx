@@ -13,7 +13,7 @@ function LanguageSelector() {
       <div onClick={() => setLanguageDropdownIsOpen((prev) => !prev)}>
         <button
           type="button"
-          className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-black-200 px-3 py-2 text-sm font-semibold text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 language-drop-header"
+          className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-black-200 px-3 py-2 text-sm font-semibold text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 language-drop-header"
           id="menu-button"
           aria-expanded="true"
           aria-haspopup="true"

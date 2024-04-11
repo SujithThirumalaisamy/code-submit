@@ -5,13 +5,14 @@
   border-radius: 8px;
   flex-grow: 1;
   overflow: hidden;
+  height: 100%;
 }
 .wrapper-header {
   background-color: #333333;
   border-radius: 8px 8px 0 0;
   padding: 4px;
 }
-.wrapper-body{
+.wrapper-body {
   flex-grow: 1;
 }
 .heading {

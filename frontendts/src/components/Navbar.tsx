@@ -8,10 +8,9 @@ function Navbar({title}:NavbarPropsType) {
     <div className="navbar">
       <div className="wrapper">
         <img
-          src="/TUF.png"
+          src="/CompileNow.png"
           alt=""
           className="nav-logo cursor-pointer"
-          style={{ padding: "20px 0px" }}
         />
         <span>{title}</span>
       </div>

@@ -9,7 +9,7 @@ function Input({ heading }: { heading: string }) {
   const dispatch = useDispatch();
   console.log(heading);
   return (
-    <div className="content">
+    <div className="content w-screen h-full">
       <textarea
         className="editor-input"
         value={globalState.editorInput}

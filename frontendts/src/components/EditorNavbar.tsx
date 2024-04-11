@@ -7,10 +7,9 @@ function EditorNavbar() {
   return (
     <div className="navbar">
       <img
-        src="/TUF.png"
+        src="/CompileNow.png"
         alt=""
         className="nav-logo cursor-pointer"
-        style={{ padding: "20px 0px" }}
       />
       <div className="nav-lang-select">
         <LanguageSelector />
