@@ -30,7 +30,7 @@ export const CodeEditor = () => {
           position: "fixed",
           gap: "0.2rem",
         }}
-        defaultSize={parseInt(localStorage.getItem("splitPos1"), 10) || 960}
+        defaultSize={parseInt(localStorage.getItem("splitPos1"), 10) || 540}
         onChange={(size) => localStorage.setItem("splitPos1", size)}
       >
         <ResizableComponentWrapper
@@ -54,7 +54,7 @@ export const CodeEditor = () => {
           split="vertical"
           style={{ position: "fixed", gap: "0.2rem" }}
           minSize={25}
-          defaultSize={parseInt(localStorage.getItem("splitPos2"), 10) || 540}
+          defaultSize={parseInt(localStorage.getItem("splitPos2"), 10) || 900 }
           onChange={(size) => localStorage.setItem("splitPos2", size)}
         >
           <ResizableComponentWrapper
