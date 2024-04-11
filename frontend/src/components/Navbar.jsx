@@ -5,10 +5,12 @@ function Navbar({title}) {
     <div className="navbar">
       <div className="wrapper">
         <img
-          src="/TUF.png"
+          src="/CompileNow.png"
           alt=""
           className="nav-logo cursor-pointer"
           style={{ padding: "20px 0px" }}
+          width={100}
+          height={35}
         />
         <span>{title}</span>
       </div>
